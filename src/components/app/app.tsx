@@ -19,7 +19,13 @@ import {
   IngredientDetails,
   ProtectedRoute
 } from '@components';
-import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
+import {
+  Route,
+  Routes,
+  useLocation,
+  useNavigate,
+  HashRouter
+} from 'react-router-dom';
 import { useDispatch } from '../../services/store';
 import { useEffect } from 'react';
 import { getCookie } from '../../utils/cookie';
@@ -99,6 +105,9 @@ const App = () => {
           }
         />
         <Route path='*' element={<NotFound404 />} />
+        <Route path='/feed/:number' element={<OrderInfo />} />
+        <Route path='/ingredients/:id' element={<IngredientDetails />} />
+        <Route path='/profile/orders/:number' element={<OrderInfo />} />
       </Routes>
 
       {backgroundLocation && (

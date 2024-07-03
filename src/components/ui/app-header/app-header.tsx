@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import styles from './app-header.module.css';
 import { TAppHeaderUIProps } from './type';
 import {
@@ -17,7 +17,13 @@ export const AppHeaderUI: FC<TAppHeaderUIProps> = ({ userName }) => {
       <nav className={`${styles.menu} p-4`}>
         <div className={styles.menu_part_left}>
           <>
-            <BurgerIcon type={'primary'} />
+            <p>
+              {idLink === '' ? (
+                <BurgerIcon type={'primary'} />
+              ) : (
+                <BurgerIcon type={'secondary'} />
+              )}
+            </p>
             <Link
               to='/'
               className={`text text_type_main-default ml-2 mr-10 ${styles.link} ${idLink === '' ? styles.link_active : ''}`}
@@ -26,7 +32,13 @@ export const AppHeaderUI: FC<TAppHeaderUIProps> = ({ userName }) => {
             </Link>
           </>
           <>
-            <ListIcon type={'primary'} />
+            <p>
+              {idLink === 'feed' ? (
+                <ListIcon type={'primary'} />
+              ) : (
+                <ListIcon type={'secondary'} />
+              )}
+            </p>
             <Link
               to='/feed'
               className={`text text_type_main-default ml-2 ${styles.link} ${idLink === 'feed' ? styles.link_active : ''}`}
@@ -39,7 +51,13 @@ export const AppHeaderUI: FC<TAppHeaderUIProps> = ({ userName }) => {
           <Logo className='' />
         </div>
         <div className={styles.link_position_last}>
-          <ProfileIcon type={'primary'} />
+          <p>
+            {idLink === 'profile' ? (
+              <ProfileIcon type={'primary'} />
+            ) : (
+              <ProfileIcon type={'secondary'} />
+            )}
+          </p>
           <Link
             to='/profile'
             className={`text text_type_main-default ml-2 ${styles.link} ${idLink === 'profile' ? styles.link_active : ''}`}
