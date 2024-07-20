@@ -17,6 +17,7 @@
 .link {
   display: flex;
   text-decoration: none;
+  color: #8585ad;
   color: var(--text-inactive-color);
 }
 
