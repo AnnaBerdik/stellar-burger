@@ -20,13 +20,13 @@ export const ProtectedRoute = ({
     return <Preloader />;
   }
 
+  if (!onlyUnAuth && !user) {
+    return <Navigate to='/login' state={{ from: location }} />;
+  }
+
   if (onlyUnAuth && user) {
     const from = location.state?.from || { pathname: '/' };
     return <Navigate replace to={from} />;
-  }
-
-  if (!onlyUnAuth && !user) {
-    return <Navigate to='/register' state={{ from: location }} />;
   }
 
   return children;
